@@ -71,7 +71,7 @@ app.get('/api/me',auth,(req,res)=>res.json({user:req.user}));
 app.get('/api/games',(req,res)=>res.json({games:db.prepare('SELECT * FROM games ORDER BY id').all()}));
 app.get('/api/bets',auth,(req,res)=>res.json({bets:db.prepare('SELECT b.*,g.name game FROM bets b JOIN games g ON g.id=b.game_id WHERE b.user_id=? ORDER BY b.id DESC LIMIT 50').all(req.user.id)}));
 app.post('/api/spin',auth,(req,res)=>{
- const bet=Math.floor(Number(req.body.bet)); const game=db.prepare('SELECT * FROM games WHERE id=? AND status="active"').get(req.body.gameId);
+ const bet=Math.floor(Number(req.body.bet)); const game=db.prepare("SELECT * FROM games WHERE id=? AND status='active'").get(req.body.gameId);
  if(!game)return res.status(400).json({error:'Jogo indisponível'});
  if(!Number.isFinite(bet)||bet<10)return res.status(400).json({error:'Aposta mínima: 10 créditos demo'});
  if(bet>req.user.balance)return res.status(400).json({error:'Saldo insuficiente'});
