@@ -1,5 +1,23 @@
 let token=localStorage.getItem('ns_token'),user=null,games=[],current=null;const $=x=>document.getElementById(x);const money=n=>Number(n).toLocaleString('pt-BR');
-async function api(url,opt={}){opt.headers={...(opt.headers||{}),...(token?{Authorization:'Bearer '+token}:{})};let r=await fetch(url,opt),d=await r.json();if(!r.ok)throw Error(d.error||'Erro');return d}
+async function api(url,opt={}) {
+  opt.headers = {
+    ...(opt.headers || {}),
+    ...(token ? {Authorization:'Bearer '+token} : {})
+  };
+
+  let r = await fetch(url,opt);
+  let text = await r.text();
+
+  let d;
+  try {
+    d = JSON.parse(text);
+  } catch {
+    throw Error('A API retornou uma resposta inválida.');
+  }
+
+  if (!r.ok) throw Error(d.error || 'Erro');
+  return d;
+}
 async function login(){try{let d=await api('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:$('email').value,password:$('password').value})});token=d.token;localStorage.setItem('ns_token',token);$('auth').classList.add('hidden');await init()}catch(e){$('authMsg').textContent=e.message}}
 async function init(){try{let d=await api('/api/me');user=d.user;$('userBox').innerHTML=`${user.name} • 🪙 <b>${money(user.balance)}</b> <button onclick="logout()">Sair</button>`;$('balance').textContent=money(user.balance);games=(await api('/api/games')).games;$('gamesGrid').innerHTML=games.map(g=>`<article class="card" onclick="openGame(${g.id})"><div class="art">${g.name==='Neon Fruits'?'🍒 🍋 🍉':g.name==='Cyber 7'?'7️⃣ ⚡ 💎':'💎 👑 🔥'}</div><h3>${g.name}</h3><small>${g.status}</small></article>`).join('');loadHistory()}catch(e){localStorage.removeItem('ns_token')}}
 async function loadHistory(){let d=await api('/api/bets');$('historyList').innerHTML=d.bets.length?d.bets.map(b=>`<div class="row"><span>${b.game}</span><span>${money(b.bet)}</span><span>${b.prize?'+':''}${money(b.prize)}</span></div>`).join(''):'Nenhuma jogada.'}
