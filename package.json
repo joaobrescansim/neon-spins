@@ -1,0 +1,7 @@
+{
+  "name":"neon-spins-v3",
+  "version":"3.0.0",
+  "private":true,
+  "scripts":{"start":"node server/server.js"},
+  "dependencies":{"express":"^4.21.2","better-sqlite3":"^11.8.1"}
+}
