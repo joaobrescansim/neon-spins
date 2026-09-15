@@ -116,4 +116,4 @@ app.get('/api/admin/transactions',auth,admin,(req,res)=>res.json({transactions:d
 
 const PORT=process.env.PORT||3000;
 app.get('/',(req,res)=>res.sendFile(path.join(__dirname,'../public/index.html')));
-app.listen(PORT,()=>console.log(`NEON SPINS online na porta ${PORT}`));
+app.listen(PORT,'0.0.0.0',()=>console.log(`NEON SPINS online na porta ${PORT}`));
