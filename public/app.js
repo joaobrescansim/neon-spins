@@ -12,8 +12,8 @@ async function api(url,opt={}) {
   try {
     d = JSON.parse(text);
   } catch {
-    throw Error('A API retornou uma resposta inválida.');
-  }
+  throw Error(`Resposta inválida da API. Status: ${r.status}. Resposta: ${text.substring(0,300)}`);
+}
 
   if (!r.ok) throw Error(d.error || 'Erro');
   return d;
