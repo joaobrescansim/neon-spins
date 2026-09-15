@@ -1,0 +1,8 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Neon Spins Admin</title><link rel="stylesheet" href="admin.css"></head><body>
+<header><div class="logo">NEON<span>SPINS</span> / ADMIN</div><button onclick="location.href='/'">Abrir plataforma</button></header>
+<div id="login" class="login"><h1>Painel Administrativo</h1><input id="email" value="admin@local.test"><input id="pass" type="password" value="admin123"><button onclick="login()">Entrar</button><p id="msg"></p></div>
+<main id="app" class="hidden"><div class="cards"><div><small>USUÁRIOS</small><b id="users">0</b></div><div><small>APOSTAS</small><b id="bets">0</b></div><div><small>VOLUME DEMO</small><b id="wager">0</b></div><div><small>PRÊMIOS</small><b id="prizes">0</b></div></div>
+<section><h2>Usuários</h2><table><thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Saldo</th><th>Status</th><th>Ação</th></tr></thead><tbody id="usersTable"></tbody></table></section>
+<section><h2>Jogos</h2><table><thead><tr><th>Jogo</th><th>RTP demo</th><th>Status</th><th>Ação</th></tr></thead><tbody id="gamesTable"></tbody></table></section>
+<section><h2>Últimas apostas</h2><table><thead><tr><th>Usuário</th><th>Jogo</th><th>Aposta</th><th>Prêmio</th><th>Data</th></tr></thead><tbody id="betsTable"></tbody></table></section></main>
+<script src="admin.js"></script></body></html>
