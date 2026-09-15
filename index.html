@@ -1,0 +1,9 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Neon Spins</title><link rel="stylesheet" href="style.css"></head>
+<body><header><div class="logo">NEON<span>SPINS</span></div><nav><a href="#games">Jogos</a><a href="#wallet">Carteira</a><a href="#history">Histórico</a></nav><div id="userBox"></div></header>
+<main><section class="hero"><div><small>DEVELOPMENT SANDBOX</small><h1>Uma nova experiência<br><span>em slots.</span></h1><p>Plataforma de desenvolvimento com conta, carteira virtual, jogos, histórico e API.</p><button onclick="document.querySelector('#games').scrollIntoView()">Jogar demo</button></div><div class="heroArt">🎰<b>NEON JACKPOT</b><small>CRÉDITOS VIRTUAIS</small></div></section>
+<section id="games"><h2>Jogos</h2><div id="gamesGrid" class="grid"></div></section>
+<section id="wallet" class="panel"><div><small>SALDO DEMO</small><h2 id="balance">10.000</h2></div><button onclick="bonus()">+ 2.500 bônus</button></section>
+<section id="history"><h2>Histórico</h2><div id="historyList" class="list">Faça login para ver.</div></section></main>
+<div id="auth" class="modal"><div class="box"><h2>Entrar</h2><input id="email" placeholder="E-mail" value="demo@local.test"><input id="password" type="password" placeholder="Senha" value="demo123"><button onclick="login()">Entrar</button><p id="authMsg"></p><small>Demo: demo@local.test / demo123</small></div></div>
+<div id="slot" class="modal hidden"><div class="box slot"><button class="x" onclick="closeSlot()">×</button><small>SLOTS DEMO</small><h2 id="gameTitle"></h2><div class="reels"><div id="r0">🍒</div><div id="r1">🍋</div><div id="r2">💎</div></div><input id="bet" type="number" value="100" min="10"><button onclick="spin()">GIRAR</button><p id="msg">Boa sorte!</p></div></div>
+<footer>NEON SPINS • DESENVOLVIMENTO • DINHEIRO REAL DESATIVADO</footer><script src="app.js"></script></body></html>
