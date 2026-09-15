@@ -114,4 +114,6 @@ app.patch('/api/admin/games/:id',auth,admin,(req,res)=>{
 });
 app.get('/api/admin/transactions',auth,admin,(req,res)=>res.json({transactions:db.prepare('SELECT t.*,u.name user FROM transactions t JOIN users u ON u.id=t.user_id ORDER BY t.id DESC LIMIT 200').all()}));
 
-app.listen(3000,()=>console.log('NEON SPINS v3: http://localhost:3000'));
+const PORT=process.env.PORT||3000;
+app.get('/',(req,res)=>res.sendFile(path.join(__dirname,'../public/index.html')));
+app.listen(PORT,()=>console.log(`NEON SPINS online na porta ${PORT}`));
